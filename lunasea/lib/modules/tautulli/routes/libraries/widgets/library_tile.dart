@@ -29,7 +29,7 @@ class TautulliLibrariesLibraryTile extends StatelessWidget {
           ],
         ),
         TextSpan(
-          style: const TextStyle(
+          style: TextStyle(
             color: LunaColours.accent,
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,
           ),

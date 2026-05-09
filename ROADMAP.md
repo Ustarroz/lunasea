@@ -18,10 +18,14 @@ Projet archivé en avril 2025 (v11.0.0). Objectif : remettre l'app en état de m
 - [x] Régénérer les fichiers de code généré (`npm run generate`)
 - [x] Vérifier que `flutter analyze` passe sans erreurs bloquantes
 - [x] Tester le build en debug sur un appareil physique iOS
-- [ ] Différencier visuellement l'app dev de l'app App Store originale :
+- [x] Différencier visuellement l'app dev de l'app App Store originale :
   - [x] Renommer le display name → `LunaSea+` (`CFBundleDisplayName` dans `ios/Runner/Info.plist`)
-  - [ ] Créer/adapter une icône custom (`assets/icon/icon.png` — 1024x1024)
-  - [ ] Régénérer les icônes via `dart run flutter_launcher_icons`
+  - [x] Système de **thèmes Wada** (6 palettes sélectionnables depuis Settings) avec logo + couleurs in-app dynamiques
+  - [x] Régénérer l'icône d'app statique (Rust & Celadon) via `dart run flutter_launcher_icons`
+  - [x] Splash Flutter dynamique qui suit le thème actif (logo + couleur de fond) ; native LaunchScreen neutralisé en `#1B1E27`
+  - [ ] **iOS Alternate Icons** : changer l'icône du home-screen en fonction du thème (nécessite enregistrement des variantes dans `Info.plist` + MethodChannel natif ou plugin `flutter_dynamic_icon_plus`)
+  - [ ] **Android activity-aliases** : équivalent côté Android (chaque thème = une activity-alias avec son icône)
+  - [ ] Décider du sort des couleurs des modules (Lidarr/NZBGet/Sonarr/etc. en `lib/modules.dart`) : laisser les brand colors d'origine, ou les faire suivre le thème actif
 - [ ] Valider la connexion à une instance Sonarr locale
 - [ ] Valider la connexion à une instance Radarr locale
 - [ ] Identifier les fonctionnalités visiblement cassées à l'usage
@@ -93,6 +97,9 @@ Projet archivé en avril 2025 (v11.0.0). Objectif : remettre l'app en état de m
   - [ ] `com.apple.developer.networking.wifi-info` (nécessaire pour Wake on LAN)
   - [ ] `com.apple.developer.associated-domains` → `webcredentials:www.lunasea.app` (deep links)
   - [ ] Fichier concerné : `lunasea/ios/Runner/Runner.entitlements`
+- [ ] **Préparer les assets pour soumission App Store :**
+  - [ ] Ajouter `remove_alpha_ios: true` dans `pubspec.yaml > flutter_icons:` (Apple refuse les icônes avec canal alpha)
+  - [ ] Régénérer l'icône via `dart run flutter_launcher_icons`
 - [ ] Créer la fiche app sur App Store Connect
 - [ ] Soumettre pour review Apple
 - [ ] Mettre en place TestFlight pour les bêta-testeurs
@@ -128,4 +135,7 @@ Projet archivé en avril 2025 (v11.0.0). Objectif : remettre l'app en état de m
 | 2026-05-09 | Phase 1 | Désactivation `ENABLE_USER_SCRIPT_SANDBOXING` dans `Runner.xcodeproj` (compatibilité Xcode 15+) |
 | 2026-05-09 | Phase 1 | ✅ App lancée sur iPhone physique via `flutter run` |
 | 2026-05-09 | Phase 1 | Renommage app → `LunaSea+` (CFBundleDisplayName) pour distinguer de l'app store |
+| 2026-05-09 | Phase 1 | ✅ Système de **thèmes Wada** : 6 palettes (Indigo Dusk, Cerulean & Sand, Pine & Linen, Rust & Celadon, Madder & Bone, Plum & Ochre) sélectionnables depuis Settings → General. Assets in-app dans `assets/themes/<slug>/`, conversion `LunaColours.{accent,primary,secondary}` de `static const` → getters dynamiques (40 fichiers cascadés). |
+| 2026-05-10 | Phase 1 | ✅ Régénération de l'**icône d'app statique** sur **Rust & Celadon** via `flutter_launcher_icons` (iOS .appiconset + Android mipmap). `adaptive_icon_background` passé à `#211814`. |
+| 2026-05-10 | Phase 1 | ✅ **Splash en 2 étages** : native LaunchScreen neutralisé (couleur unie `#1B1E27`, aucun logo) + nouveau widget Flutter `LunaSplash` (`lib/system/splash/luna_splash.dart`) qui peint le branding du thème actif pendant 900ms après le premier frame. `LunaBIOS` passé en `StatefulWidget` pour gérer le timer du splash. Le splash suit donc dynamiquement le thème choisi par l'utilisateur. |
 

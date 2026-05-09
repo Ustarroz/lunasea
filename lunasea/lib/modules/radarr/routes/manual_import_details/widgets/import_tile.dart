@@ -68,7 +68,7 @@ class RadarrManualImportDetailsTile extends StatelessWidget {
           .watch<RadarrManualImportDetailsTileState>()
           .manualImport
           .lunaMovie,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         color: LunaColours.accent,
       ),

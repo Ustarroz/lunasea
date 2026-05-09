@@ -69,7 +69,7 @@ class TautulliSyncedItemTile extends StatelessWidget {
     String _state = syncedItem.state ?? 'lunasea.Unknown'.tr();
     return TextSpan(
       text: _state.toTitleCase(),
-      style: const TextStyle(
+      style: TextStyle(
         color: LunaColours.accent,
         fontWeight: LunaUI.FONT_WEIGHT_BOLD,
       ),

@@ -22,6 +22,7 @@
   * [Tautulli](lunasea/notifications/tautulli.md)
   * [Custom Notifications](lunasea/notifications/custom-notifications.md)
 * [Profiles](lunasea/profiles.md)
+* [Themes](lunasea/themes.md)
 
 ## Modules
 

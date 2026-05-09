@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,7 @@ import 'package:lunasea/system/cache/image/image_cache.dart';
 import 'package:lunasea/system/cache/memory/memory_store.dart';
 import 'package:lunasea/system/network/network.dart';
 import 'package:lunasea/system/recovery_mode/main.dart';
+import 'package:lunasea/system/splash/luna_splash.dart';
 import 'package:lunasea/system/window_manager/window_manager.dart';
 import 'package:lunasea/system/platform.dart';
 
@@ -44,10 +47,35 @@ Future<void> bootstrap() async {
   await LunaMemoryStore().initialize();
 }
 
-class LunaBIOS extends StatelessWidget {
+class LunaBIOS extends StatefulWidget {
   const LunaBIOS({
     super.key,
   });
+
+  @override
+  State<LunaBIOS> createState() => _LunaBIOSState();
+}
+
+class _LunaBIOSState extends State<LunaBIOS> {
+  /// How long the themed Flutter splash stays visible after the first frame.
+  ///
+  /// Long enough for the user to register the branding, short enough not
+  /// to feel like a stall. Tweak if needed.
+  static const _splashDuration = Duration(milliseconds: 900);
+
+  bool _splashVisible = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the timer after the first frame so the splash is actually
+    // painted before we begin counting down.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(_splashDuration, () {
+        if (mounted) setState(() => _splashVisible = false);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +95,31 @@ class LunaBIOS extends StatelessWidget {
             selectItems: [
               LunaSeaDatabase.THEME_AMOLED,
               LunaSeaDatabase.THEME_AMOLED_BORDER,
+              LunaSeaDatabase.THEME_WADA,
             ],
             builder: (context, _) {
               return MaterialApp.router(
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
-                builder: DevicePreview.appBuilder,
+                builder: (context, child) {
+                  final wrapped = DevicePreview.appBuilder(context, child);
+                  return Stack(
+                    children: [
+                      wrapped,
+                      // Themed boot splash — fades out 900ms after first
+                      // frame. Stack order matters: splash is on top so the
+                      // user never sees the un-themed router contents flash
+                      // through.
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 250),
+                        child: _splashVisible
+                            ? const LunaSplash()
+                            : const SizedBox.shrink(key: ValueKey('hidden')),
+                      ),
+                    ],
+                  );
+                },
                 darkTheme: theme.activeTheme(),
                 theme: theme.activeTheme(),
                 title: 'LunaSea',

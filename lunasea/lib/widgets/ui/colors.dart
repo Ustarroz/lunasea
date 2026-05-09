@@ -2,26 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:lunasea/core.dart';
 
 class LunaColours {
-  /// List of LunaSea colours in order that the should appear in a list.
+  /// Core accent colour — bright highlight, derived from the active Wada
+  /// theme's `secondary` (the "moon" colour in the icon).
+  static Color get accent => WadaTheme.active.palette.secondary;
+
+  /// Core primary colour (background canvas) — Wada `background`.
+  static Color get primary => WadaTheme.active.palette.background;
+
+  /// Core secondary colour (appbar, bottom bar, cards, dialogs) —
+  /// Wada `surface` (slight lift over background).
+  static Color get secondary => WadaTheme.active.palette.surface;
+
+  /// Wada `primary` — used for the wave-coloured details (logo overlays,
+  /// secondary chrome). Only available through the themed palette.
+  static Color get wadaPrimary => WadaTheme.active.palette.primary;
+
+  /// Wada `accent` — soft wordmark / focus-ring colour, lighter than
+  /// [accent].
+  static Color get wadaAccent => WadaTheme.active.palette.accent;
+
+  /// List of LunaSea colours in order that they should appear in a list.
   ///
-  /// Use [byListIndex] to fetch the colour at the any index
-  static const _LIST_COLOR_ICONS = [
-    blue,
-    accent,
-    red,
-    orange,
-    purple,
-    blueGrey,
-  ];
-
-  /// Core accent colour
-  static const Color accent = Color(0xFF4ECCA3);
-
-  /// Core primary colour (background)
-  static const Color primary = Color(0xFF32323E);
-
-  /// Core secondary colour (appbar, bottom bar, etc.),
-  static const Color secondary = Color(0xFF282834);
+  /// Use [byListIndex] to fetch the colour at any index. Built lazily because
+  /// [accent] is no longer a compile-time constant.
+  static List<Color> get _listColorIcons => [
+        blue,
+        accent,
+        red,
+        orange,
+        purple,
+        blueGrey,
+      ];
 
   static const Color blue = Color(0xFF00A8E8);
   static const Color blueGrey = Color(0xFF848FA5);
@@ -52,7 +63,8 @@ class LunaColours {
   /// Return the correct colour for a list.
   /// If the index is greater than the list of colour's length, uses modulus to loop list.
   Color byListIndex(int index) {
-    return _LIST_COLOR_ICONS[index % _LIST_COLOR_ICONS.length];
+    final list = _listColorIcons;
+    return list[index % list.length];
   }
 }
 

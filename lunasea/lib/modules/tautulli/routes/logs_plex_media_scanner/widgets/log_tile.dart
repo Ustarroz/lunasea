@@ -27,7 +27,7 @@ class TautulliLogsPlexMediaScannerLogTile extends StatelessWidget {
   TextSpan _subtitle2() {
     return TextSpan(
       text: log.level ?? LunaUI.TEXT_EMDASH,
-      style: const TextStyle(
+      style: TextStyle(
         color: LunaColours.accent,
         fontWeight: LunaUI.FONT_WEIGHT_BOLD,
       ),

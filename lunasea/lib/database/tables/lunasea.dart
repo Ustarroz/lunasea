@@ -19,6 +19,7 @@ enum LunaSeaDatabase<T> with LunaTableMixin<T> {
   THEME_AMOLED<bool>(false),
   THEME_AMOLED_BORDER<bool>(false),
   THEME_IMAGE_BACKGROUND_OPACITY<int>(20),
+  THEME_WADA<String>('indigo-dusk'),
   QUICK_ACTIONS_LIDARR<bool>(false),
   QUICK_ACTIONS_RADARR<bool>(false),
   QUICK_ACTIONS_SONARR<bool>(false),

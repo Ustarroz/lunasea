@@ -35,12 +35,14 @@ class LunaTheme {
       iconTheme: const IconThemeData(
         color: Colors.white,
       ),
-      tooltipTheme: const TooltipThemeData(
+      tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           color: LunaColours.secondary,
-          borderRadius: BorderRadius.all(Radius.circular(LunaUI.BORDER_RADIUS)),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(LunaUI.BORDER_RADIUS),
+          ),
         ),
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           color: LunaColours.grey,
           fontSize: LunaUI.FONT_SIZE_SUBHEADER,
         ),

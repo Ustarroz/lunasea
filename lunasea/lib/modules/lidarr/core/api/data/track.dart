@@ -20,7 +20,7 @@ class LidarrTrackData {
 
   TextSpan file(bool monitored) {
     if (hasFile) {
-      return const TextSpan(
+      return TextSpan(
         text: 'Downloaded',
         style: TextStyle(
           color: LunaColours.accent,

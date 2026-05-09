@@ -56,7 +56,7 @@ class RadarrQueueTile extends StatelessWidget {
       children: [
         TextSpan(
           text: record.lunaQuality,
-          style: const TextStyle(
+          style: TextStyle(
             color: LunaColours.accent,
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,
           ),

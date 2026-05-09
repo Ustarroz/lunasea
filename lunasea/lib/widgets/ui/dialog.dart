@@ -136,7 +136,7 @@ abstract class LunaDialog {
             decoration: TextDecoration.none,
             fontSize: LunaDialog.BODY_SIZE,
           ),
-          focusedBorder: const UnderlineInputBorder(
+          focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: LunaColours.accent),
           ),
           enabledBorder: UnderlineInputBorder(
@@ -174,7 +174,7 @@ abstract class LunaDialog {
             decoration: TextDecoration.none,
             fontSize: LunaDialog.BODY_SIZE,
           ),
-          focusedBorder: const UnderlineInputBorder(
+          focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: LunaColours.accent),
           ),
           enabledBorder: UnderlineInputBorder(

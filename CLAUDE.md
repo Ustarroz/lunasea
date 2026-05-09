@@ -37,6 +37,14 @@ npm run generate:environment       # Regenerate lib/system/environment.dart from
 # Watch mode for code generation during active development
 npm run generate:build_runner:watch
 
+# Regenerate the static launcher icon (iOS .appiconset + Android mipmap)
+# from assets/icon/icon.png — see pubspec.yaml `flutter_icons:` block.
+fvm dart run flutter_launcher_icons
+
+# Regenerate the native LaunchScreen (iOS storyboard + Android drawable +
+# Web HTML splash) from pubspec.yaml `flutter_native_splash:` block.
+fvm dart run flutter_native_splash:create
+
 # Release builds
 npm run build:android
 npm run build:ios
@@ -87,6 +95,28 @@ There are no automated tests; `flutter analyze` is the primary quality gate.
 **Localization:** Source JSON files live in `localization/<module>/<lang>.json`. The script `scripts/generate_localization.dart` merges them into `assets/localization/<lang>.json`. All strings are accessed via `'key'.tr()` from `easy_localization`.
 
 **Code generation output:** All `.g.dart` files are generated — do not edit them manually. Re-run `npm run generate:build_runner` after any change to annotated files.
+
+### Theming (Wada palettes + dynamic logo)
+
+The fork ships **6 selectable colour themes** inspired by Sanzo Wada — Indigo Dusk (default), Cerulean & Sand, Pine & Linen, Rust & Celadon, Madder & Bone, Plum & Ochre. Each theme bundles a 5-role palette (`background` / `primary` / `secondary` / `accent` / `surface`) plus a logo set under `assets/themes/<slug>/`.
+
+**Key files:**
+- `lib/widgets/ui/wada_theme.dart` — `WadaTheme` enum + `WadaPalette` model. `WadaTheme.active` reads the slug from Hive (`LunaSeaDatabase.THEME_WADA`).
+- `lib/widgets/ui/colors.dart` — `LunaColours.{accent,primary,secondary}` are runtime getters that read `WadaTheme.active.palette`. **They are no longer compile-time constants.** When you reference them inside a `const` constructor, Dart will reject the call — drop the `const` or accept `Color?` and resolve at the use-site.
+- `lib/widgets/ui/assets.dart` — `LunaAssets.{brandingFull,brandingLogo}` are dynamic getters returning the active theme's PNG paths.
+- `lib/system/splash/luna_splash.dart` — Flutter-side themed splash widget. Overlays the router for ~900ms after the first frame, painting the active theme's branding. The native LaunchScreen is intentionally neutral (`#1B1E27`, no logo) because it cannot read user preferences before Flutter starts.
+
+**Where to switch themes (UI):** Settings → General → "Wada Themes" section. Each tile shows the theme's mini-icon + name + tagline; tap to switch. Implementation in `lib/modules/settings/routes/configuration_general/route.dart` → `_wadaThemes()`.
+
+**What follows the active theme:**
+- All chrome (`canvasColor`, `primaryColor`, dialog/tooltip/splash colours via `LunaTheme.activeTheme()`)
+- The drawer header logo, splash branding, FAB background, focus rings, dialog buttons, and any widget that resolves `LunaColours.accent`
+- The Flutter-side boot splash (`LunaSplash`)
+
+**What does NOT follow the active theme** (deliberate):
+- The home-screen icon (iOS .appiconset / Android mipmap) — baked at compile time. Currently set to Rust & Celadon. Dynamic per-theme requires iOS Alternate Icons + Android activity-aliases (tracked in `ROADMAP.md` Phase 1).
+- The native LaunchScreen — same reason; uses a neutral dark colour instead.
+- Brand colours of integrated services (Lidarr green, Sonarr blue, Radarr yellow, etc.) — hardcoded in `lib/modules.dart` because they represent each service's own brand identity.
 
 ### Commit convention
 

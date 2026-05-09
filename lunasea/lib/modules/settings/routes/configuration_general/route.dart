@@ -40,6 +40,7 @@ class _State extends State<ConfigurationGeneralRoute>
       controller: scrollController,
       children: [
         ..._appearance(),
+        ..._wadaThemes(),
         ..._localization(),
         ..._modules(),
         if (LunaNetwork.isSupported) ..._network(),
@@ -54,6 +55,43 @@ class _State extends State<ConfigurationGeneralRoute>
       _imageBackgroundOpacity(),
       _amoledTheme(),
       _amoledThemeBorders(),
+    ];
+  }
+
+  List<Widget> _wadaThemes() {
+    return [
+      const LunaHeader(text: 'Wada Themes'),
+      LunaSeaDatabase.THEME_WADA.listenableBuilder(
+        builder: (context, _) {
+          final active = WadaTheme.active;
+          return Column(
+            children: WadaTheme.values.map((theme) {
+              final isActive = theme == active;
+              return LunaBlock(
+                title: theme.name,
+                body: [TextSpan(text: theme.tagline)],
+                leading: ClipRRect(
+                  borderRadius:
+                      BorderRadius.circular(LunaUI.BORDER_RADIUS / 2),
+                  child: Image.asset(
+                    theme.iconAsset,
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                trailing: isActive
+                    ? Icon(
+                        Icons.check_circle_rounded,
+                        color: theme.palette.secondary,
+                      )
+                    : null,
+                onTap: () => LunaSeaDatabase.THEME_WADA.update(theme.slug),
+              );
+            }).toList(),
+          );
+        },
+      ),
     ];
   }
 

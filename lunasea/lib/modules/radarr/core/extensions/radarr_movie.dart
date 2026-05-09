@@ -97,7 +97,7 @@ extension LunaRadarrMovieExtension on RadarrMovie {
     if (this.hasFile!)
       return Text(
         lunaFileSize,
-        style: const TextStyle(
+        style: TextStyle(
           color: LunaColours.accent,
           fontSize: LunaUI.FONT_SIZE_H3,
           fontWeight: LunaUI.FONT_WEIGHT_BOLD,

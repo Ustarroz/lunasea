@@ -67,7 +67,7 @@ class _State extends State<TautulliSearchResultTile> {
   TextSpan _library() {
     return TextSpan(
       text: widget.result.libraryName,
-      style: const TextStyle(
+      style: TextStyle(
         color: LunaColours.accent,
         fontWeight: LunaUI.FONT_WEIGHT_BOLD,
       ),

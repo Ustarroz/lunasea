@@ -70,6 +70,13 @@ flutter:
     # System Assets
     - assets/images/
     - assets/localization/
+    # Wada theme assets (one folder per theme slug)
+    - assets/themes/indigo-dusk/
+    - assets/themes/cerulean-sand/
+    - assets/themes/pine-linen/
+    - assets/themes/rust-celadon/
+    - assets/themes/madder-bone/
+    - assets/themes/plum-ochre/
   fonts:
     - family: LunaBrandIcons
       fonts:
@@ -78,11 +85,17 @@ flutter_icons:
   android: true
   ios: true
   image_path: assets/icon/icon.png
-  adaptive_icon_background: "#32323E"
+  # Rust & Celadon background (Wada theme `rust-celadon`)
+  adaptive_icon_background: "#211814"
   adaptive_icon_foreground: assets/icon/icon_adaptive.png
 flutter_native_splash:
-  image: assets/images/branding_full.png
-  color: "#32323E"
+  # The native LaunchScreen is shown by the OS BEFORE Flutter starts,
+  # so it cannot read the user-selected Wada theme. We keep it neutral
+  # (solid dark colour, no image) and let the Flutter-side `LunaSplash`
+  # widget paint the themed branding as soon as the engine is up.
+  # The colour below is a neutral dark that sits between the six Wada
+  # backgrounds (#1C2433 → #221820) so any theme transition is subtle.
+  color: "#1B1E27"
 msix_config:
   architecture: x64
   capabilities: internetClientServer,privateNetworkClientServer

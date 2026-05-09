@@ -72,7 +72,7 @@ class _State<T> extends State<LunaPagedListView<T>> {
               icon: Icons.error_rounded,
               color: LunaColours.red,
             ),
-            noMoreItemsIndicatorBuilder: (context) => const LunaIconButton(
+            noMoreItemsIndicatorBuilder: (context) => LunaIconButton(
               icon: Icons.check_rounded,
               color: LunaColours.accent,
             ),

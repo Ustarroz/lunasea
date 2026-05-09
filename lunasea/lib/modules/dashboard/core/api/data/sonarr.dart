@@ -59,7 +59,7 @@ class CalendarSonarrData extends CalendarData {
       if (hasFile)
         TextSpan(
           text: 'Downloaded ($fileQualityProfile)',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,
             color: LunaColours.accent,
           ),
