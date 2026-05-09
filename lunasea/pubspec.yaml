@@ -89,11 +89,13 @@ flutter_icons:
   adaptive_icon_background: "#211814"
   adaptive_icon_foreground: assets/icon/icon_adaptive.png
 flutter_native_splash:
-  # Native splash uses the Rust & Celadon Wada theme (static — the
-  # native LaunchScreen is baked at compile time and cannot be changed
-  # at runtime).
-  image: assets/themes/rust-celadon/branding_full.png
-  color: "#211814"
+  # The native LaunchScreen is shown by the OS BEFORE Flutter starts,
+  # so it cannot read the user-selected Wada theme. We keep it neutral
+  # (solid dark colour, no image) and let the Flutter-side `LunaSplash`
+  # widget paint the themed branding as soon as the engine is up.
+  # The colour below is a neutral dark that sits between the six Wada
+  # backgrounds (#1C2433 → #221820) so any theme transition is subtle.
+  color: "#1B1E27"
 msix_config:
   architecture: x64
   capabilities: internetClientServer,privateNetworkClientServer
