@@ -1,6 +1,8 @@
-# LunaSea
+# LunaSea+
 
-LunaSea is a fully featured, open source self-hosted controller focused on giving you a seamless experience between all of your self-hosted media software remotely on your devices.
+LunaSea+ is a community-maintained fork of [LunaSea](https://www.lunasea.app/) — a fully featured, open source self-hosted controller focused on giving you a seamless experience between all of your self-hosted media software remotely on your devices.
+
+The original project was archived in April 2025; this fork picks the work back up and adds new features such as **Wada themes** (six selectable colour palettes — see [Themes](lunasea/themes.md)).
 
 ## Modules
 
@@ -13,7 +15,7 @@ LunaSea is a fully featured, open source self-hosted controller focused on givin
 * [Tautulli](modules/tautulli.md)
 * [Wake on LAN](modules/wake-on-lan.md)
 
-LunaSea even comes with support for webhook-based push notifications, multiple instances of applications using profiles, backup and restore functionality for your configuration, an AMOLED black theme, and more!
+LunaSea+ comes with support for webhook-based push notifications, multiple instances of applications using profiles, backup and restore functionality for your configuration, an AMOLED black theme, six selectable Wada colour themes, and more!
 
 {% hint style="info" %}
 LunaSea is purely a remote control application, it does not offer any functionality without software installed on a server/computer.
