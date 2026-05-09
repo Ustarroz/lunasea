@@ -122,6 +122,8 @@ The fork ships **6 selectable colour themes** inspired by Sanzo Wada — Indigo 
 
 Commits must follow conventional commits with these allowed types: `feat`, `fix`, `refactor`, `chore`, `docs`, `release`. Enforced by commitlint (`.commitlintrc`).
 
+**Do not add AI-attribution trailers.** Repository policy is to keep commit messages and PR descriptions free of `Co-Authored-By: Claude …`, `🤖 Generated with [Claude Code]`, or any equivalent. The default commit-template in this Claude Code setup adds them — strip those lines before running `git commit` and before creating a PR with `gh pr create`.
+
 ### Git workflow
 
 **Never push directly to `master`.** The harness blocks direct pushes to the default branch. Always go through a feature branch + PR, even on this personal fork — the history stays clean and reviewable.
