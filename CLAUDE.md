@@ -92,6 +92,34 @@ There are no automated tests; `flutter analyze` is the primary quality gate.
 
 Commits must follow conventional commits with these allowed types: `feat`, `fix`, `refactor`, `chore`, `docs`, `release`. Enforced by commitlint (`.commitlintrc`).
 
+### Git workflow
+
+**Never push directly to `master`.** The harness blocks direct pushes to the default branch. Always go through a feature branch + PR, even on this personal fork — the history stays clean and reviewable.
+
+Standard flow when changes are ready to ship:
+
+```bash
+# 1. Create a feature branch from current commit (after committing locally on master by mistake, or proactively before committing)
+git branch <type>/<short-description> HEAD
+git reset --hard origin/master         # rewind master to remote state
+git checkout <type>/<short-description>
+
+# 2. Push the branch
+git push -u origin <type>/<short-description>
+
+# 3. Create the PR (uses the gh CLI, already authenticated)
+gh pr create --title "<conventional commit subject>" --body "<summary + test plan>"
+
+# 4. Merge the PR and delete the remote branch in one shot
+gh pr merge <PR-number> --merge --delete-branch
+
+# 5. The local master auto-updates via the merge command. Verify:
+git checkout master
+git status   # should show "up to date with 'origin/master'"
+```
+
+Branch naming follows the commit type: `chore/...`, `feat/...`, `fix/...`, `refactor/...`, `docs/...`.
+
 ---
 
 ## lunasea-notification-service
