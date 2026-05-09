@@ -5,9 +5,11 @@ targets:
       - pubspec.*
       - $package$
     builders:
-      # Hive
-      hive_generator:
+      # Hive CE
+      hive_ce_generator:hive_ce_generator:
         enabled: true
+        options:
+          use_hive_registrar: false
       # JSON Serializable
       json_serializable:
         enabled: true
