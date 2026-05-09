@@ -20,8 +20,10 @@ Projet archivé en avril 2025 (v11.0.0). Objectif : remettre l'app en état de m
 - [x] Tester le build en debug sur un appareil physique iOS
 - [ ] Différencier visuellement l'app dev de l'app App Store originale :
   - [x] Renommer le display name → `LunaSea+` (`CFBundleDisplayName` dans `ios/Runner/Info.plist`)
-  - [ ] Créer/adapter une icône custom (`assets/icon/icon.png` — 1024x1024)
-  - [ ] Régénérer les icônes via `dart run flutter_launcher_icons`
+  - [x] Système de **thèmes Wada** (6 palettes sélectionnables depuis Settings) avec logo + couleurs in-app dynamiques
+  - [ ] **iOS Alternate Icons** : changer l'icône du home-screen en fonction du thème (nécessite enregistrement des variantes dans `Info.plist` + MethodChannel natif ou plugin `flutter_dynamic_icon_plus`)
+  - [ ] **Android activity-aliases** : équivalent côté Android (chaque thème = une activity-alias avec son icône)
+  - [ ] Régénérer l'icône d'app principale (par défaut Indigo Dusk) via `dart run flutter_launcher_icons` à partir de `assets/themes/indigo-dusk/icon.png`
 - [ ] Valider la connexion à une instance Sonarr locale
 - [ ] Valider la connexion à une instance Radarr locale
 - [ ] Identifier les fonctionnalités visiblement cassées à l'usage
@@ -128,4 +130,5 @@ Projet archivé en avril 2025 (v11.0.0). Objectif : remettre l'app en état de m
 | 2026-05-09 | Phase 1 | Désactivation `ENABLE_USER_SCRIPT_SANDBOXING` dans `Runner.xcodeproj` (compatibilité Xcode 15+) |
 | 2026-05-09 | Phase 1 | ✅ App lancée sur iPhone physique via `flutter run` |
 | 2026-05-09 | Phase 1 | Renommage app → `LunaSea+` (CFBundleDisplayName) pour distinguer de l'app store |
+| 2026-05-09 | Phase 1 | ✅ Système de **thèmes Wada** : 6 palettes (Indigo Dusk, Cerulean & Sand, Pine & Linen, Rust & Celadon, Madder & Bone, Plum & Ochre) sélectionnables depuis Settings → General. Assets in-app dans `assets/themes/<slug>/`, conversion `LunaColours.{accent,primary,secondary}` de `static const` → getters dynamiques (40 fichiers cascadés). |
 
