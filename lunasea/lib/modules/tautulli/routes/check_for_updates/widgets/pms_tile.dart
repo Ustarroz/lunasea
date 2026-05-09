@@ -36,7 +36,7 @@ class TautulliCheckForUpdatesPMSTile extends StatelessWidget {
   List<TextSpan> _subtitle() {
     return [
       if (!(update.updateAvailable ?? false))
-        const TextSpan(
+        TextSpan(
           text: 'No Updates Available',
           style: TextStyle(
             color: LunaColours.accent,

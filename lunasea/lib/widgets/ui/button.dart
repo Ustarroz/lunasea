@@ -63,7 +63,7 @@ class LunaButton extends Card {
   /// If [LunaLoadingState] is passed in, will build the correct button based on the type.
   factory LunaButton({
     required LunaButtonType type,
-    Color color = LunaColours.accent,
+    Color? color,
     Color? backgroundColor,
     String? text,
     IconData? icon,
@@ -157,7 +157,7 @@ class LunaButton extends Card {
     required String text,
     required IconData? icon,
     double iconSize = LunaUI.ICON_SIZE,
-    Color color = LunaColours.accent,
+    Color? color,
     Color? backgroundColor,
     EdgeInsets margin = LunaUI.MARGIN_HALF,
     double height = DEFAULT_HEIGHT,
@@ -177,7 +177,7 @@ class LunaButton extends Card {
               Padding(
                 child: Icon(
                   icon,
-                  color: color,
+                  color: color ?? LunaColours.accent,
                   size: iconSize,
                 ),
                 padding: const EdgeInsets.only(
@@ -215,7 +215,7 @@ class LunaButton extends Card {
   /// Build a button that contains a [LunaLoader].
   factory LunaButton.loader({
     EdgeInsets margin = LunaUI.MARGIN_HALF,
-    Color color = LunaColours.accent,
+    Color? color,
     Color? backgroundColor,
     double height = DEFAULT_HEIGHT,
     Alignment alignment = Alignment.center,
@@ -244,7 +244,7 @@ class LunaButton extends Card {
   /// Build a button that contains a single, centered [Icon].
   factory LunaButton.icon({
     required IconData? icon,
-    Color color = LunaColours.accent,
+    Color? color,
     Color? backgroundColor,
     EdgeInsets margin = LunaUI.MARGIN_HALF,
     double height = DEFAULT_HEIGHT,
@@ -258,7 +258,7 @@ class LunaButton extends Card {
     return LunaButton._(
       child: Icon(
         icon,
-        color: color,
+        color: color ?? LunaColours.accent,
         size: iconSize,
       ),
       margin: margin,

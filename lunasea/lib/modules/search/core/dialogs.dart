@@ -37,14 +37,14 @@ class SearchDialogs {
                           ),
                         ),
                       ),
-                      const Icon(
+                      Icon(
                         Icons.arrow_drop_down_rounded,
                         color: LunaColours.accent,
                       ),
                     ],
                   ),
                   padding: const EdgeInsets.only(bottom: 2.0),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
                         color: LunaColours.accent,

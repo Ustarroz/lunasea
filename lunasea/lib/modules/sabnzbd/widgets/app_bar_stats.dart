@@ -31,7 +31,7 @@ class SABnzbdAppBarStats extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: _status(data.item1, data.item2),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: LunaUI.FONT_WEIGHT_BOLD,
                       fontSize: LunaUI.FONT_SIZE_HEADER,
                       color: LunaColours.accent,

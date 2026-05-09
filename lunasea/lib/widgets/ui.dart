@@ -41,6 +41,7 @@ export 'ui/text_span.dart';
 export 'ui/text_style.dart';
 export 'ui/text.dart';
 export 'ui/theme.dart';
+export 'ui/wada_theme.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class LunaUI {

@@ -99,7 +99,7 @@ class _State extends State<LunaTextInputBar> {
         ),
         suffixIcon: AnimatedOpacity(
           child: InkWell(
-            child: const Icon(
+            child: Icon(
               Icons.close_rounded,
               color: LunaColours.accent,
               size: 24.0,

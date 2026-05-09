@@ -67,6 +67,7 @@ class LunaBIOS extends StatelessWidget {
             selectItems: [
               LunaSeaDatabase.THEME_AMOLED,
               LunaSeaDatabase.THEME_AMOLED_BORDER,
+              LunaSeaDatabase.THEME_WADA,
             ],
             builder: (context, _) {
               return MaterialApp.router(

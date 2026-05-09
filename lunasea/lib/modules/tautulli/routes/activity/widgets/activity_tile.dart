@@ -87,7 +87,7 @@ class TautulliActivityTile extends StatelessWidget {
   TextSpan _subtitle3() {
     return TextSpan(
       text: session.formattedStream(),
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         color: LunaColours.accent,
       ),

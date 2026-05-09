@@ -6,7 +6,7 @@ class LunaActionBarCard extends StatelessWidget {
   final String title;
   final String? subtitle;
   final Color? backgroundColor;
-  final Color color;
+  final Color? color;
   final IconData icon;
   final Function? onTap;
   final Function? onLongPress;
@@ -20,7 +20,7 @@ class LunaActionBarCard extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.backgroundColor,
-    this.color = LunaColours.accent,
+    this.color,
     this.icon = LunaIcons.ARROW_RIGHT,
     this.checkboxState,
     this.checkboxOnChanged,
@@ -48,7 +48,7 @@ class LunaActionBarCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: LunaUI.FONT_SIZE_BUTTON,
                           fontWeight: LunaUI.FONT_WEIGHT_BOLD,
-                          color: color,
+                          color: color ?? LunaColours.accent,
                         ),
                       ),
                       if (subtitle != null)

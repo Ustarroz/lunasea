@@ -125,7 +125,7 @@ class LidarrHistoryDataTrackFileImported extends LidarrHistoryData {
       TextSpan(text: timestampString),
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} ($quality)',
-        style: const TextStyle(
+        style: TextStyle(
           color: LunaColours.accent,
           fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         ),
@@ -151,7 +151,7 @@ class LidarrHistoryDataDownloadImported extends LidarrHistoryData {
       TextSpan(text: timestampString),
       TextSpan(
         text: '${LidarrConstants.EVENT_TYPE_MESSAGES[eventType]} ($quality)',
-        style: const TextStyle(
+        style: TextStyle(
           color: LunaColours.accent,
           fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         ),

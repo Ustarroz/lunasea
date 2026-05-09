@@ -6,7 +6,7 @@ class LunaFloatingActionButtonAnimated extends StatelessWidget {
   final AnimatedIconData icon;
   final AnimationController? controller;
   final Color color;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Function onPressed;
 
   const LunaFloatingActionButtonAnimated({
@@ -14,7 +14,7 @@ class LunaFloatingActionButtonAnimated extends StatelessWidget {
     required this.onPressed,
     required this.icon,
     required this.controller,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor,
     this.color = Colors.white,
     this.heroTag,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class LunaFloatingActionButtonAnimated extends StatelessWidget {
       ),
       heroTag: heroTag,
       onPressed: onPressed as void Function()?,
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? LunaColours.accent,
     );
   }
 }

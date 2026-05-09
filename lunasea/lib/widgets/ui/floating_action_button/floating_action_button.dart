@@ -3,7 +3,7 @@ import 'package:lunasea/core.dart';
 
 class LunaFloatingActionButton extends StatelessWidget {
   final Color color;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final IconData icon;
   final String? label;
   final void Function() onPressed;
@@ -14,13 +14,14 @@ class LunaFloatingActionButton extends StatelessWidget {
     required this.icon,
     this.label,
     required this.onPressed,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor,
     this.color = Colors.white,
     this.heroTag,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final bg = backgroundColor ?? LunaColours.accent;
     if (label?.isNotEmpty ?? false) {
       return FloatingActionButton.extended(
         icon: Icon(icon, color: color),
@@ -34,7 +35,7 @@ class LunaFloatingActionButton extends StatelessWidget {
             letterSpacing: 0.35,
           ),
         ),
-        backgroundColor: backgroundColor,
+        backgroundColor: bg,
         heroTag: heroTag,
       );
     }
@@ -42,7 +43,7 @@ class LunaFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       child: Icon(icon, color: color),
       onPressed: onPressed,
-      backgroundColor: backgroundColor,
+      backgroundColor: bg,
       heroTag: heroTag,
     );
   }

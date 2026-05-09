@@ -35,7 +35,7 @@ class TautulliCheckForUpdatesTautulliTile extends StatelessWidget {
   List<TextSpan> _subtitle() {
     return [
       if (!(update.update ?? false))
-        const TextSpan(
+        TextSpan(
           text: 'No Updates Available',
           style: TextStyle(
             color: LunaColours.accent,

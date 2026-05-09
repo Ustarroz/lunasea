@@ -70,6 +70,13 @@ flutter:
     # System Assets
     - assets/images/
     - assets/localization/
+    # Wada theme assets (one folder per theme slug)
+    - assets/themes/indigo-dusk/
+    - assets/themes/cerulean-sand/
+    - assets/themes/pine-linen/
+    - assets/themes/rust-celadon/
+    - assets/themes/madder-bone/
+    - assets/themes/plum-ochre/
   fonts:
     - family: LunaBrandIcons
       fonts:

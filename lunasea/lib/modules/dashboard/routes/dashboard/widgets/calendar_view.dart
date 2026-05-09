@@ -163,7 +163,7 @@ class _State extends State<CalendarView> {
                   defaultTextStyle: dayStyle,
                   disabledTextStyle: unavailableStyle,
                   outsideTextStyle: outsideStyle,
-                  selectedTextStyle: const TextStyle(
+                  selectedTextStyle: TextStyle(
                     color: LunaColours.accent,
                     fontWeight: LunaUI.FONT_WEIGHT_BOLD,
                   ),

@@ -18,7 +18,7 @@ class RadarrRootFolderTile extends StatelessWidget {
         TextSpan(text: rootFolder.lunaSpace),
         TextSpan(
           text: rootFolder.lunaUnmappedFolders,
-          style: const TextStyle(
+          style: TextStyle(
             color: LunaColours.accent,
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,
           ),

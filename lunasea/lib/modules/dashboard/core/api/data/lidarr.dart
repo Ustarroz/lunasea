@@ -41,7 +41,7 @@ class CalendarLidarrData extends CalendarData {
           ),
         ),
       if (hasAllFiles)
-        const TextSpan(
+        TextSpan(
           text: 'Downloaded',
           style: TextStyle(
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,

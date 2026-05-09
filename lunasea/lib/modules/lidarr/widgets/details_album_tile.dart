@@ -33,7 +33,7 @@ class _State extends State<LidarrDetailsAlbumTile> {
         TextSpan(text: widget.data.tracks),
         TextSpan(
           text: widget.data.releaseDateString,
-          style: const TextStyle(
+          style: TextStyle(
             color: LunaColours.accent,
             fontWeight: LunaUI.FONT_WEIGHT_BOLD,
           ),

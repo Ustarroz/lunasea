@@ -27,7 +27,7 @@ class TautulliLogsNotificationLogTile extends StatelessWidget {
       TextSpan(text: notification.bodyText),
       TextSpan(
         text: notification.timestamp!.asDateTime(),
-        style: const TextStyle(
+        style: TextStyle(
           color: LunaColours.accent,
           fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         ),

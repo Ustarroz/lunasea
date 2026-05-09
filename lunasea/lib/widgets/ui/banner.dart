@@ -7,7 +7,7 @@ class LunaBanner extends StatelessWidget {
   final String headerText;
   final String? bodyText;
   final IconData icon;
-  final Color iconColor;
+  final Color? iconColor;
   final Color? backgroundColor;
   final Color headerColor;
   final Color bodyColor;
@@ -20,7 +20,7 @@ class LunaBanner extends StatelessWidget {
     required this.headerText,
     this.bodyText,
     this.icon = Icons.info_outline_rounded,
-    this.iconColor = LunaColours.accent,
+    this.iconColor,
     this.backgroundColor,
     this.headerColor = Colors.white,
     this.bodyColor = LunaColours.grey,
@@ -46,7 +46,7 @@ class LunaBanner extends StatelessWidget {
                     child: Icon(
                       icon,
                       size: 20.0,
-                      color: iconColor,
+                      color: iconColor ?? LunaColours.accent,
                     ),
                     padding: EdgeInsets.only(
                         right: LunaUI.MARGIN_DEFAULT.right - 2.0),
@@ -61,7 +61,7 @@ class LunaBanner extends StatelessWidget {
                   ),
                   if (dismissCallback != null)
                     InkWell(
-                      child: const Icon(
+                      child: Icon(
                         Icons.close_rounded,
                         size: 20.0,
                         color: LunaColours.accent,

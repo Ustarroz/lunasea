@@ -29,7 +29,7 @@ class _State extends State<TautulliStatisticsStreamTile> {
       TextSpan(
         text: widget.data['count'].toString() +
             (widget.data['count'] == 1 ? ' Play' : ' Plays'),
-        style: const TextStyle(
+        style: TextStyle(
           color: LunaColours.accent,
           fontWeight: LunaUI.FONT_WEIGHT_BOLD,
         ),

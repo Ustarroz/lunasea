@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:lunasea/core.dart';
 
 class LunaHighlightedNode extends StatelessWidget {
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Color textColor;
   final String text;
 
   const LunaHighlightedNode({
     Key? key,
     required this.text,
-    this.backgroundColor = LunaColours.accent,
+    this.backgroundColor,
     this.textColor = Colors.white,
   }) : super(key: key);
 
@@ -29,7 +29,7 @@ class LunaHighlightedNode extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
       ),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: backgroundColor ?? LunaColours.accent,
         borderRadius: BorderRadius.circular(LunaUI.BORDER_RADIUS),
       ),
     );

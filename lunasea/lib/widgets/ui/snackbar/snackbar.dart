@@ -89,7 +89,7 @@ Future<void> showLunaSnackBar({
           ? TextButton(
               child: Text(
                 buttonText.toUpperCase(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: LunaUI.FONT_WEIGHT_BOLD,
                   color: LunaColours.accent,
                 ),
